@@ -20,13 +20,17 @@ app.use(function(req, res, next){
     next();
 })
 
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
+
+
 // Routes
 app.use('/api', require('./routes/api'));
 
-app.get('/', function (req, res) {
-  res.send('Activado!');
-});
 
 // Start server
-app.listen(5000);
-console.log('API is running on port 5000');
+app.listen(3000);
+console.log('API is running on port 3000');
+
+app.use
