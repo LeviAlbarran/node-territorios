@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "ejs": "2.4.1",
-    "express": "4.13.3"
+    "express":"latest",
+    "mongoose":"latest",
+    "node-restful":"latest",
+    "body-parser":"latest"
   },
   "repository": {
     "type": "git",
