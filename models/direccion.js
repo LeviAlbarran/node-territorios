@@ -5,6 +5,7 @@ var mongoose = restful.mongoose;
 
 // Schema
 var direccionSchema = new mongoose.Schema({
+    id: Number,
     nombre: String,
     direccion: String,
     condicion: String,
@@ -13,7 +14,7 @@ var direccionSchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
     estado: String,
-    territorio: String,
+    territorio: Number,
     visitas:{
 
     	fecha: String,
