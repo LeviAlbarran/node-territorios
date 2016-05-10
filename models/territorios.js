@@ -1,7 +1,7 @@
-var restful = require('node-rest-ful');
+var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
-var territoriosShema = new mongoose.Schema({
+var territoriosSchema = new mongoose.Schema({
 	id: String,
 	nombre: String
 
