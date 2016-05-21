@@ -14,7 +14,7 @@ var direccionSchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
     estado: String,
-    territorio: Number,
+    territorio: String,
     visitas:{
 
     	fecha: String,
