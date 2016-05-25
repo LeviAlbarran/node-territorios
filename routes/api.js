@@ -22,6 +22,9 @@ Territorios.register(router, '/territorios');
 Zonas.methods(['get', 'put', 'post', 'delete']);
 Zonas.register(router, '/zonas');
 
+Visitas.methods(['get', 'put', 'post', 'delete']);
+Visitas.register(router, '/visitas');
+
 
 // Return router
 module.exports = router;
