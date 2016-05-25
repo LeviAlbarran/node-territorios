@@ -8,6 +8,7 @@ var Direccion = require('../models/direccion');
 var Territorios = require('../models/territorios');
 var Zonas = require('../models/zonas');
 var Usuarios = require('../models/usuarios');
+var Visitas = require('../models/visitas');
 
 // Routes
 Usuarios.methods(['get', 'put', 'post', 'delete']);
