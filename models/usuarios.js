@@ -7,6 +7,7 @@ var usuariosSchema = new mongoose.Schema({
 	nombre: String,
 	correo: String,
 	clave: String,
+
 	lat: Number,
 	lng: Number,
 	nivel: Number,
