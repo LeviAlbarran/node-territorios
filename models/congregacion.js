@@ -13,7 +13,8 @@ var congregacionSchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
     estado: String,
-    dataBase: String
+    dataBase: String,
+    conexion: String
 });
 
 // Return model

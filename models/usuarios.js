@@ -7,10 +7,36 @@ var usuariosSchema = new mongoose.Schema({
 	nombre: String,
 	correo: String,
 	clave: String,
-
 	lat: Number,
 	lng: Number,
 	nivel: Number,
-	activacion: Number
+	activacion: Boolean,
+	permisos: {
+		territorios: [],
+		sistema: {
+			verificacion: {
+				visualizar: Boolean,
+				crear: Boolean,
+				modificar: Boolean,
+				eliminar: Boolean
+			},
+			territorio: {
+				crear: Boolean,
+				modificar: Boolean,
+				eliminar: Boolean
+			},
+			zonas: {
+				crear: Boolean,
+				modificar: Boolean,
+				eliminar: Boolean
+			},
+			direcciones: {
+				crear: Boolean,
+				modificar: Boolean,
+				eliminar: Boolean
+			}
+
+		}
+	} 
 });
 module.exports = restful.model('usuarios', usuariosSchema);

@@ -47,13 +47,29 @@ var correo = req.body.correo;
 var clave = req.body.clave;  
 console.log(req.body);
  User.findOne({correo: correo}, function(err, user) {
-        console.log(user);
-
+    console.log(user);
+   // Congregacion.findOne({id: user.id_congregacion}, function(err, congregacion) {
         if (user) {
             if (user.clave==clave) {
-                return res
-                .status(200)
-                .send({token: service.createToken(user)});
+    
+                if(user.activacion=="1"){
+                    if(user.id_congregacion = 1){
+                        user.conexion = "http://localhost:5000/api";         
+                        console.log("italiano Maracaibo");
+                    }
+                    else if(user.id_congregacion = 2){
+                        user.conexion = "http://localhost:5000/api";         
+                        console.log("Aruba Español");
+                    }
+                  return res
+                  .status(200)
+                  .send({token: service.createToken(user)});
+                }else{
+                 return res
+                 .status(200)
+                 .send({response: "En espera de activacion. Comuniquese con el Encargado de territorios"});     
+                }
+
             }else{
                 return res
                 .status(200)
@@ -65,10 +81,6 @@ console.log(req.body);
             .status(200)
             .send({response: "Su correo es incorrecto"});
         }
-    
-        // Comprobar si hay errores
-        // Si el usuario existe o no
-        // Y si la contraseña es correcta
-        
-    });
+    //});    
+});
 };

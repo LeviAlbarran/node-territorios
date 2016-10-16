@@ -8,8 +8,8 @@ var authCtrl = require('./controllers/auth');
 var middleware = require('./controllers/middleware');
 
 // MongoDB
-//mongoose.connect('mongodb://localhost/node/territorios');
 mongoose.connect('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
+//mongoose.connect('mongodb://arubaspanish:123@jello.modulusmongo.net:27017/moSyv6ym');
 // Express
 var app = express();  
 app.use(bodyParser.json());  
