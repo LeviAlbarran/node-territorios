@@ -15,6 +15,13 @@ var app = express();
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded({extended: true}));  
 app.use(cors());  
+app.use(function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '*');
+  //  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+})
 app.set('port', 5000);
 //app.set('port', (process.env.PORT || 5000));
 
