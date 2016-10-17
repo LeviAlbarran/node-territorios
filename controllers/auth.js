@@ -54,11 +54,13 @@ console.log(req.body);
     
                 if(user.activacion=="1"){
                     if(user.id_congregacion = 1){
-                        user.conexion = "http://localhost:5000/api";         
+                        //user.conexion = "http://localhost:5000/api";
+                        user.conexion = "http://node-territorios.herokuapp.com/api";             
                         console.log("italiano Maracaibo");
                     }
                     else if(user.id_congregacion = 2){
-                        user.conexion = "http://localhost:5000/api";         
+                      //  user.conexion = "http://localhost:5000/api"; 
+                        user.conexion = "http://node-territorios.herokuapp.com/api";        
                         console.log("Aruba Español");
                     }
                   return res
