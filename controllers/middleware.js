@@ -3,11 +3,16 @@ var jwt = require('jwt-simple');
 var moment = require('moment');  
 var config = require('./config');
 var mongoose = require('mongoose');
+//var cors = require('cors');
 
 
 exports.ensureAuthenticated = function(req, res, next) {
- 
-  console.log(req.headers.authorization)
+      res.header('Access-Control-Allow-Origin', '*');
+  //  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  //console.log(req.headers.authorization)
   if(!req.headers.authorization) {
     return res
       .status(403)
@@ -16,7 +21,7 @@ exports.ensureAuthenticated = function(req, res, next) {
 
   var token = req.headers.authorization.split(" ")[1];
   //var token = req.headers.authorization;
-  console.log(token);
+ // console.log(token);
   var payload = jwt.decode(token, config.TOKEN_SECRET);
 
   if(payload.exp <= moment().unix()) {
@@ -24,6 +29,11 @@ exports.ensureAuthenticated = function(req, res, next) {
          .status(401)
         .send({message: "El token ha expirado"});
   }
+
+
+  var usuario = req.headers.authorization.split(" ")[1];
+  usuario = jwt.decode(usuario, config.TOKEN_SECRET);
+  console.log(usuario.eml);
 
  //var db1 = mongoose.createConnection('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
  //var db1 = db1.useDb('someDbName');
