@@ -9,7 +9,7 @@ var middleware = require('./controllers/middleware');
 var autoIncrement = require('mongoose-auto-increment');
 
 // MongoDB
-var connection = mongoose.connect('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
+mongoose.connect('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
 //mongoose.connect('mongodb://arubaspanish:123@jello.modulusmongo.net:27017/moSyv6ym');
 // Express
 var app = express();  
@@ -25,7 +25,7 @@ app.use(function(req, res, next){
     next();
 })
 
-autoIncrement.initialize(connection);
+//autoIncrement.initialize(connection);
 
 //app.set('port', 5000);
 //app.set('port', (process.env.PORT || 5000));
