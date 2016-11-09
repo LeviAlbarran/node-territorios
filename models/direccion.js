@@ -36,6 +36,6 @@ var direccionSchema = new mongoose.Schema({
 
 });
 
-direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id', startAt: 71 });
+direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id', startAt: 71, incrementBy: 1 });
 // Return model
 module.exports = restful.model('direccion', direccionSchema);
