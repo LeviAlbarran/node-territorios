@@ -2,6 +2,9 @@
 // Dependencias
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
+var autoIncrement = require('mongoose-auto-increment');
+var connection = mongoose.createConnection("mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari");
+autoIncrement.initialize(connection);
 
 // Schema
 var direccionSchema = new mongoose.Schema({
@@ -33,5 +36,6 @@ var direccionSchema = new mongoose.Schema({
 
 });
 
+direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id' });
 // Return model
 module.exports = restful.model('direccion', direccionSchema);
