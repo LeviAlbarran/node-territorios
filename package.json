@@ -17,8 +17,7 @@
     "body-parser":"latest",
     "cors":"latest",
     "jwt-simple":"latest",
-    "moment":"latest",
-    "mongoose-auto-increment":"latest"
+    "moment":"latest"
   },
   "repository": {
     "type": "git",
