@@ -38,7 +38,7 @@ var direccionSchema = new mongoose.Schema({
 
 direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id', startAt: 69 });
 // Return model
-    book = new Book();
+    direccion = new direccion();
  
 direccion.save(function (err) {
  
