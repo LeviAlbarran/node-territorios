@@ -8,11 +8,6 @@ var mongoose = restful.mongoose;
 
 // Schema
 
-var CounterSchema = Schema({
-    _id: {type: String, required: true},
-    seq: { type: Number, default: 0 }
-});
-var counter = mongoose.model('counter', CounterSchema);
 
 var direccionSchema = new mongoose.Schema({
     id: Number,
@@ -43,15 +38,7 @@ var direccionSchema = new mongoose.Schema({
 
 });
 
-direccionSchema.pre('save', function(next) {
-    var doc = this;
-    counter.findByIdAndUpdate({_id: 'id'}, {$inc: { seq: 1} }, function(error, counter)   {
-        if(error)
-            return next(error);
-        doc.testvalue = counter.seq;
-        next();
-    });
-});
+
 
 //direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id' });
 // Return model
