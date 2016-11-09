@@ -1,8 +1,12 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 
+autoIncrement = require('mongoose-auto-increment');
+var connection = mongoose.createConnection("mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari");
+autoIncrement.initialize(connection);
+
 var usuariosSchema = new mongoose.Schema({
-	id: Number,
+	id: {type: Number, required: true},
 	id_congregacion: Number,
 	nombre: String,
 	correo: String,
@@ -39,4 +43,5 @@ var usuariosSchema = new mongoose.Schema({
 		}
 	} 
 });
+usuariosSchema.plugin(autoIncrement.plugin, { model: 'usuarios', field: 'id' });
 module.exports = restful.model('usuarios', usuariosSchema);

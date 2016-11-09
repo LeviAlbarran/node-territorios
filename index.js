@@ -6,9 +6,10 @@ var bodyParser = require('body-parser');
 var cors = require('cors');  
 var authCtrl = require('./controllers/auth');  
 var middleware = require('./controllers/middleware');
+var autoIncrement = require('mongoose-auto-increment');
 
 // MongoDB
-mongoose.connect('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
+var connection = mongoose.connect('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
 //mongoose.connect('mongodb://arubaspanish:123@jello.modulusmongo.net:27017/moSyv6ym');
 // Express
 var app = express();  
@@ -23,6 +24,9 @@ app.use(function(req, res, next){
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 })
+
+autoIncrement.initialize(connection);
+
 //app.set('port', 5000);
 //app.set('port', (process.env.PORT || 5000));
 
