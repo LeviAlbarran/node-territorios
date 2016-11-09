@@ -6,7 +6,7 @@ var connection = mongoose.createConnection("mongodb://levi:123@jello.modulusmong
 autoIncrement.initialize(connection);
 
 var usuariosSchema = new mongoose.Schema({
-	id: {type: Number, required: true},
+	id: Number,
 	id_congregacion: Number,
 	nombre: String,
 	correo: String,
