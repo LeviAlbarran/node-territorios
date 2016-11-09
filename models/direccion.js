@@ -36,6 +36,25 @@ var direccionSchema = new mongoose.Schema({
 
 });
 
-direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id' });
+direccionSchema.plugin(autoIncrement.plugin, { model: 'direccion', field: 'id', startAt: 69 });
 // Return model
+    book = new Book();
+ 
+direccion.save(function (err) {
+ 
+    // direccion._id === 100 -> true 
+ 
+    direccion.nextCount(function(err, count) {
+ 
+        // count === 101 -> true 
+ 
+        direccion.resetCount(function(err, nextCount) {
+ 
+            // nextCount === 100 -> true 
+ 
+        });
+ 
+    });
+ 
+});
 module.exports = restful.model('direccion', direccionSchema);
