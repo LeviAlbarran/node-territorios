@@ -7,6 +7,8 @@ var cors = require('cors');
 var authCtrl = require('./controllers/auth');  
 var middleware = require('./controllers/middleware');
 var autoIncrement = require('mongoose-auto-increment');
+var Direccion = require('./models/direccion');
+
 
 // MongoDB
 mongoose.connect('mongodb://levi:123@jello.modulusmongo.net:27017/iq6yPari');
@@ -51,6 +53,13 @@ app.use('/api', middleware.ensureAuthenticated,  require('./routes/api'));
 app.listen(app.get('port'), function() {
   console.log('Node appk is running on port', app.get('port'));
 });
+
+app.get('/api/ultimaDireccion', function(request, response) {
+	 Direccion.find({}).limit(1).sort({_id:-1}).exec(function(error, data){
+	 	response.json(data);
+	 });	 
+});
+
 
 /* var express = require('express');
 var app = express();
