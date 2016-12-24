@@ -55,7 +55,7 @@ app.listen(app.get('port'), function() {
 });
 
 app.get('/api/ultimaDireccion', function(request, response) {
-	 Direccion.find({}).limit(1).sort({_id:-1}).exec(function(error, data){
+	 Direccion.find({}).limit(1).sort({id:-1}).exec(function(error, data){
 	 	response.json(data);
 	 });	 
 });

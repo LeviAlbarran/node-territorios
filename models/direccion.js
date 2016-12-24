@@ -26,6 +26,7 @@ var direccionSchema = new mongoose.Schema({
     territorio: String,
     edificacion: String,
     foto: String,
+    id_a: String,
     visitas:{
 
     	fecha: String,
