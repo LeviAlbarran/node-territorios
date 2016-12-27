@@ -61,7 +61,7 @@ app.get('/api/ultimaDireccion', function(request, response) {
 });
 
 app.get('/api/listDireccion', function(request, response) {
-   Direccion.find({}, { _id: 1, id: 1, nombre: 1, id_a : 1}).exec(function(error, data){
+   Direccion.find({}).exec(function(error, data){
      response.json(data);
    });   
 });
