@@ -60,6 +60,11 @@ app.get('/api/ultimaDireccion', function(request, response) {
 	 });	 
 });
 
+app.get('/api/listDireccion', function(request, response) {
+   Direccion.find({}, { _id: 1, id: 1, nombre: 1, id_a : 1}).exec(function(error, data){
+     response.json(data);
+   });   
+});
 
 /* var express = require('express');
 var app = express();
