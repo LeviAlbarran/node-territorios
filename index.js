@@ -60,8 +60,8 @@ app.get('/api/ultimaDireccion', function(request, response) {
 	 });	 
 });
 
-app.get('/api/listDireccion', function(request, response) {
-   Direccion.find({}).exec(function(error, data){
+app.get('/api/listDirecciones', function(request, response) {
+   Direccion.find({}, { id: 1, _id: 1, nombre: 1, id_a: 1, territorio: 1, lat: 1, lng: 1}).exec(function(error, data){
      response.json(data);
    });   
 });
