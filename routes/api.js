@@ -7,6 +7,7 @@ var router = express.Router();
 
 // Modelos
 var Direccion = require('../models/direccion');
+var DireccionTMP = require('../models/direccion_tmp');
 var Territorios = require('../models/territorios');
 var Zonas = require('../models/zonas');
 var Usuarios = require('../models/usuarios');
@@ -19,6 +20,10 @@ Usuarios.register(router, '/usuarios');
 
 Direccion.methods(['get', 'put', 'post', 'delete']);
 Direccion.register(router, '/direccion');
+
+DireccionTMP.methods(['get', 'put', 'post', 'delete']);
+DireccionTMP.register(router, '/direccion');
+
 
 Territorios.methods(['get', 'put', 'post', 'delete']);
 Territorios.register(router, '/territorios');
