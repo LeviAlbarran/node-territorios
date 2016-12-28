@@ -22,7 +22,7 @@ Direccion.methods(['get', 'put', 'post', 'delete']);
 Direccion.register(router, '/direccion');
 
 DireccionTMP.methods(['get', 'put', 'post', 'delete']);
-DireccionTMP.register(router, '/direccion');
+DireccionTMP.register(router, '/direccionTMP');
 
 
 Territorios.methods(['get', 'put', 'post', 'delete']);
