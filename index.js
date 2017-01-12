@@ -66,7 +66,7 @@ app.get('/api/listDirecciones', function(request, response) {
    });   
 });
 
-app.get('/api/sincronizacion', function(request, response) {
+app.post('/api/sincronizacion', function(request, response) {
   console.log(request); 
 //Salvar Nuevos
   if (request.direccionesNuevas) {
