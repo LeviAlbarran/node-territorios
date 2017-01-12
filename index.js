@@ -69,21 +69,27 @@ app.get('/api/listDirecciones', function(request, response) {
 app.get('/api/sincronizacion', function(request, response) {
   console.log(request); 
 //Salvar Nuevos
+  if (request.direccionesNuevas) {
    Direccion.find({}).limit(1).sort({id:-1}).exec(function(error, data){
      for (var i = 0; i < request.direccionesNuevas.length; i++) {      
         request.direccionesNuevas[i].id = data[0].id + 1;
         Direccion.insertOne(request.direccionesNuevas[i]);
      }
    });
+  }
 
 //Guardar Modificaciones
+  if (request.direccionesModificadas) {
     for (var i = 0; i < request.direccionesModificadas.length; i++) {      
         Direccion.update({ _id:request.direccionesModificadas[i]._id}, request.direccionesModificadas[i]);
      }
+   }
 // Eliminar 
+  if (request.direccionesEliminadas) {
     for (var i = 0; i < request.direccionesEliminadas.length; i++) {      
         Direccion.deleteOne({ _id : request.direccionesEliminadas})
      }
+   }
 
      response.json('sincronizado');
 
