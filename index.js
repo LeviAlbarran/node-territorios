@@ -91,7 +91,7 @@ app.post('/api/sincronizacion', function(request, response) {
      }
    }
 
-     response.json('sincronizado');
+     response.json(request.direccionesNuevas);
 
 });
 
