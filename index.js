@@ -67,31 +67,64 @@ app.get('/api/listDirecciones', function(request, response) {
 });
 
 app.post('/api/sincronizacion', function(request, response) {
-  console.log(request); 
-//Salvar Nuevos
-  if (request.direccionesNuevas) {
+
+//Direcciones
+  if (request.body.direccionesNuevas) {
    Direccion.find({}).limit(1).sort({id:-1}).exec(function(error, data){
-     for (var i = 0; i < request.direccionesNuevas.length; i++) {      
-        request.direccionesNuevas[i].id = data[0].id + 1;
-        Direccion.insertOne(request.direccionesNuevas[i]);
+     for (var i = 0; i < request.body.direccionesNuevas.length; i++) {  
+        request.body.direccionesNuevas[i].id = data[0].id + 1;
+        console.log(request.body.direccionesNuevas[i]);    
+        Direccion.create(request.body.direccionesNuevas[i]);
      }
    });
   }
 
 //Guardar Modificaciones
-  if (request.direccionesModificadas) {
-    for (var i = 0; i < request.direccionesModificadas.length; i++) {      
-        Direccion.update({ _id:request.direccionesModificadas[i]._id}, request.direccionesModificadas[i]);
+  if (request.body.direccionesModificadas) {
+    for (var i = 0; i < request.body.direccionesModificadas.length; i++) {
+      var direccion = request.body.direccionesModificadas[i];
+        Direccion.update({_id: direccion._id}, direccion, function(err, numberAffected, rawResponse) {
+             console.log(rawResponse);
+        });   
      }
    }
 // Eliminar 
-  if (request.direccionesEliminadas) {
-    for (var i = 0; i < request.direccionesEliminadas.length; i++) {      
-        Direccion.deleteOne({ _id : request.direccionesEliminadas})
+  if (request.body.direccionesEliminadas) {
+    for (var i = 0; i < request.body.direccionesEliminadas.length; i++) {
+        console.log(request.body.direccionesEliminadas[i])      
+         Direccion.remove({ _id: request.body.direccionesEliminadas[i]._id }, function(err, num) {
+                
+          });
      }
    }
 
-     response.json(request.direccionesNuevas);
+//DireccionesTemporales
+  if (request.body.direccionesTMPNuevas) {
+     for (var i = 0; i < request.body.direccionesTMPNuevas.length; i++) {  
+        request.body.direccionesTMPNuevas[i].id = data[0].id + 1;
+        console.log(request.body.direccionesTMPNuevas[i]);    
+        DireccionTMP.create(request.body.direccionesTMPNuevas[i]);
+     }
+  }
+
+//Guardar Modificaciones
+  if (request.body.direccionesTMPModificadas) {
+    for (var i = 0; i < request.body.direccionesTMPModificadas.length; i++) {      
+      DireccionTMP.update({_id: direccion._id}, direccion, function(err, numberAffected, rawResponse) {
+             console.log(rawResponse);
+        });   
+     }
+   }
+// Eliminar 
+  if (request.body.direccionesTMPEliminadas) {
+    for (var i = 0; i < request.body.direccionesTMPEliminadas.length; i++) {      
+      //  DireccionTMP.remove({ _id : request.body.direccionesTMPEliminadas[i]._id})
+        DireccionTMP.remove({ _id: request.body.direccionesTMPEliminadas[i]._id }, function(err, num) {        
+        })
+     }
+   }
+
+    response.json(request.body);
 
 });
 
